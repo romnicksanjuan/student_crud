@@ -51,7 +51,7 @@ const Login = () => {
                 <input type="text" id='password' placeholder='Enter your password' name='password' onChange={(e) => setPassword(e.target.value)} />
 
                 <button className={style.login} type='submit'>Login</button>
-                Dont have account yet? <Link to='/student_crud/'>Register</Link>
+                Dont have account yet? <Link to='/student_crud/register'>Register</Link>
             </form>
     </div>
   )

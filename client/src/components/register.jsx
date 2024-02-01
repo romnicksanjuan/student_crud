@@ -14,7 +14,9 @@ function Register() {
         e.preventDefault();
         axios.post('https://student-crud-server-five.vercel.app/student_crud/register', {username,password})
         .then(response => {console.log(response)
-            navigate('/')
+            if(response.data.message === 'register successfuly'){
+                navigate('/')
+            }
         })
         .catch(error => console.log(error))
     }

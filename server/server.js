@@ -13,13 +13,13 @@ const app = express();
 mongoose.connect('mongodb+srv://romnick:1234@romnickdb.e14diyv.mongodb.net/student_crud')
 .then(res => console.log("connected to db"))
 
-app.use(cors(
-    {
-        origin:['https://student-crud-eta.vercel.app'],
-        methods:['POST', 'GET', 'DELETE', 'PUT'],
-        credentials:true
-    }
-))
+app.use(cors())
+//     {
+//         origin:['https://student-crud-eta.vercel.app'],
+//         methods:['POST', 'GET', 'DELETE', 'PUT'],
+//         credentials:true
+//     }
+// ))
 app.use(express.json());
 app.use('/student_crud', studentRegister)
 app.use('/', studentLogin);

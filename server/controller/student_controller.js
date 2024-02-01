@@ -54,10 +54,13 @@ const getStudent = async(req,res)=>{
 
 const updateStudent = async (req,res) =>{
     const id = req.params.id;
-
+    const {username, password} = req.body
     try {
-        const updateStudent = await student.findByIdAndUpdate({_id:id}, {username:req.body.username, password:req.body.password})
-        res.json(updateStudent)
+        
+        const saveUpdate = await Student.findByIdAndUpdate({_id:id}, {username, password})
+        res.json(saveUpdate)
+
+        
     } catch (error) {
         console.log(error)
     }
@@ -67,10 +70,10 @@ const studentLogin = async (req,res) =>{
     const {username, password} = req.body;
 
     try {
-        const checkUsername = await Student.findOne({username});
-        if(checkUsername){
-            const checkPassword = await Student.findOne({password})
-            if(checkPassword){
+        const check = await Student.findOne({username});
+        if(check){
+           
+            if(check.password === password){
                 res.json({message:"login success"})
             }else{
                 res.json({message:"Password incorrect"})

@@ -8,7 +8,7 @@ function Update() {
     const [password, setPassword] = useState();
 
     useEffect(() =>{
-        axios.get('http://localhost:3000/student_crud/update/'+id)
+        axios.get('https://student-crud-server-ten.vercel.app/student_crud/update/'+id)
         .then(response => {console.log(response)
             setUsername(response.data.username)
             setPassword(response.data.password)

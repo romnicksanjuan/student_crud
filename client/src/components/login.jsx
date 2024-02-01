@@ -12,7 +12,7 @@ const Login = () => {
   const checkUser = async () =>{
     try {
       
-      const response = await axios.post('http://localhost:3000/', {username,password})
+      const response = await axios.post('https://student-crud-server-ten.vercel.app/', {username,password})
 
       if(response.data.message === 'login success'){
         navigate('/student_crud/read')

@@ -9,7 +9,7 @@ function Register() {
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-        axios.post('http://localhost:3000/student_crud/register', {username,password})
+        axios.post('https://student-crud-server-ten.vercel.app/student_crud/register', {username,password})
         .then(response => console.log(response))
         .catch(error => console.log(error))
     }

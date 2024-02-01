@@ -8,7 +8,7 @@ function Update() {
     const [password, setPassword] = useState();
 
     useEffect(() =>{
-        axios.get('https://student-crud-server-ten.vercel.app/student_crud/update/'+id)
+        axios.get('https://student-crud-server-five.vercel.app/student_crud/update/'+id)
         .then(response => {console.log(response)
             setUsername(response.data.username)
             setPassword(response.data.password)
@@ -19,7 +19,7 @@ function Update() {
         const handleUpdate = (e) =>{
             e.preventDefault();
 
-            axios.put('http://localhost:3000/student_crud/update/'+id, {username,password})
+            axios.put('hhttps://student-crud-server-five.vercel.app/student_crud/update/'+id, {username,password})
             .then(response => console.log(response.data))
             .catch(error => console.log(error))
             

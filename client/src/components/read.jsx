@@ -7,14 +7,14 @@ const Read = () => {
     const [student, setStudent] = useState([]);
 
     useEffect(() =>{
-        axios.get('https://student-crud-server-ten.vercel.app/student_crud/read')
+        axios.get('https://student-crud-server-five.vercel.app/student_crud/read')
         .then(response => setStudent(response.data))
         .catch(error => console.log(error))
     },[])
 
     const handleSubmit = async (studId) =>{
       try {
-        const response = await axios.delete(`https://student-crud-server-ten.vercel.app/student_crud/delete/${studId}`)
+        const response = await axios.delete(`https://student-crud-server-five.vercel.app/student_crud/delete/${studId}`)
         console.log(response.data)
         window.location.reload();
       } catch (error) {

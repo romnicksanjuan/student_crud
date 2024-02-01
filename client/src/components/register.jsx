@@ -2,15 +2,20 @@ import axios from 'axios';
 import { useState } from 'react';
 import style from '../css/register.module.css'
 import {Link} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
 function Register() {
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
+    
+    const navigate = useNavigate();
 
     const handleSubmit = (e) =>{
         e.preventDefault();
         axios.post('https://student-crud-server-five.vercel.app/student_crud/register', {username,password})
-        .then(response => console.log(response))
+        .then(response => {console.log(response)
+            navigate('/')
+        })
         .catch(error => console.log(error))
     }
 

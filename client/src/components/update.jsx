@@ -1,12 +1,13 @@
 import axios from 'axios';
 import React,{ useState,useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Update() {
     const {id} = useParams();
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
-
+    const navigate = useNavigate();
     useEffect(() =>{
         axios.get('https://student-crud-server-five.vercel.app/student_crud/update/'+id)
         .then(response => {console.log(response)
@@ -19,8 +20,10 @@ function Update() {
         const handleUpdate = (e) =>{
             e.preventDefault();
 
-            axios.put('hhttps://student-crud-server-five.vercel.app/student_crud/update/'+id, {username,password})
-            .then(response => console.log(response.data))
+            axios.put('https://student-crud-server-five.vercel.app/student_crud/update/'+id, {username,password})
+            .then(response => {console.log(response.data)
+                navigate('/student_crud/read')
+            })
             .catch(error => console.log(error))
             
             

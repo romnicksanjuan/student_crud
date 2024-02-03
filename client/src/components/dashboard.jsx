@@ -6,8 +6,8 @@ import { useNavigate } from 'react-router-dom'
 const Dashboard = () => {
     const navigate = useNavigate();
     const [username, setUsername] = useState();
-
-    axios.defaults.withCredentials = true
+    const token = sessionStorage.getItem('accessToken')
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     useEffect(() =>{
         axios.get('https://student-crud-server-five.vercel.app/student_crud/dashboard')
         .then(response =>{ {

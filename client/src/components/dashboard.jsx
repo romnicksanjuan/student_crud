@@ -8,7 +8,7 @@ const Dashboard = () => {
 
     axios.defaults.withCredentials = true
     useEffect(() =>{
-        axios.get('http://localhost:3000/student_crud/dashboard')
+        axios.get('https://student-crud-server-five.vercel.app/student_crud/dashboard')
         .then(response =>{ console.log(response.data)
         if(response.data === "invalid token"){
             navigate('/')

@@ -7,7 +7,7 @@ const Read = () => {
     const [student, setStudent] = useState([]);
 
     useEffect(() =>{
-        axios.get('c/student_crud/read')
+        axios.get('https://student-crud-server-five.vercel.app/student_crud/read')
         .then(response => setStudent(response.data))
         .catch(error => console.log(error))
     },[])

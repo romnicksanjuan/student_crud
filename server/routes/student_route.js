@@ -5,7 +5,7 @@ const {studentRegister,studentRead,studentDelete,getStudent,updateStudent,verify
 const router = express.Router();
 
 router.post('/register', studentRegister)
-router.get('/read',verifyToken, studentRead)
+router.get('/read', studentRead)
 router.delete('/delete/:id', studentDelete)
 router.get('/update/:id', getStudent)
 router.put('/update/:id', updateStudent )

@@ -1,4 +1,4 @@
-import axios, { Axios } from 'axios';
+import axios from 'axios';
 import React,{ useState,useEffect } from 'react'
 import {Link} from 'react-router-dom'
 import style from '../css/read.module.css'
@@ -18,7 +18,7 @@ const Read = () => {
         console.log(response.data)
         window.location.reload();
       } catch (error) {
-        
+        console.log(error)
       }
       
     }

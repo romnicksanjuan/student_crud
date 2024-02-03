@@ -81,7 +81,7 @@ const studentLogin = async (req,res) =>{
                 
                 const accessToken = jwt.sign({id: stud.id, username:stud.username}, "secret", {expiresIn: '1m'})
 
-                res.cookie('accessToken', accessToken, {httpOnly:true, maxAge: 60000}).json({accessToken, message:"login success"})
+                res.cookie('accessToken', accessToken, {httpOnly:true, maxAge: 60000,sameSite:'None',secure:true}).json({accessToken, message:"login success"})
                 // res.json({message:"login success"})
             }else{
                 res.json({message:"Password incorrect"})

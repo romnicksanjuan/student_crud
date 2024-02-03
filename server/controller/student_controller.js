@@ -81,8 +81,8 @@ const studentLogin = async (req,res) =>{
                 
                 const accessToken = jwt.sign({id: stud.id, username:stud.username}, "secret", {expiresIn: '1m'})
 
-                res.cookie('accessToken', accessToken, {httpOnly:true, maxAge: 60000})
-                res.json({message:"login success"})
+                res.cookie('accessToken', accessToken, {httpOnly:true, maxAge: 60000}).json({accessToken, message:"login success"})
+                // res.json({message:"login success"})
             }else{
                 res.json({message:"Password incorrect"})
             }
@@ -104,8 +104,8 @@ const dashboard = (req,res) =>{
 
 
 const verifyToken = (req,res, next) =>{
-    const token = req.headers.authorization.split("")[1];
-    // const token = req.cookies.accessToken;
+    // const token = req.headers.authorization.split(" ")[1];
+    const token = req.cookies.accessToken;
 
     if(!token){
         return res.json({message:"unautorized"})

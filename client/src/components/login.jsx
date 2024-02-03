@@ -13,9 +13,9 @@ const Login = () => {
   const checkUser = async () =>{
     try {
       
-      const response = await axios.post('https://student-crud-server-five.vercel.app/', {username,password})
+      const response = await axios.post('https://student-crud-server-five.vercel.app/', {username,password}, {withCredentials:true})
       console.log(response.data)
-
+      sessionStorage.getItem("accessToken", response.data.accessToken)
       if(response.data.message === 'login success'){
         navigate('/student_crud/dashboard')
       }

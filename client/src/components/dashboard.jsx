@@ -15,7 +15,7 @@ const Dashboard = () => {
 
         if(response.data.message){
           navigate('/')
-          alert('please login again')
+          
         }
         }
     })

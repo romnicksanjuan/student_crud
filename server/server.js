@@ -10,6 +10,7 @@ const cookieParser = require('cookie-parser')
 dotenv.config();
 
 const app = express();
+// https://student-crud-eta.vercel.app
 
 mongoose.connect('mongodb+srv://romnick:1234@romnickdb.e14diyv.mongodb.net/student_crud')
 .then(res => console.log("connected to db"))

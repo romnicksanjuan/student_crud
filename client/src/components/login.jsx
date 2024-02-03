@@ -50,7 +50,7 @@ const Login = () => {
                 <label htmlFor="password">
                 <strong>Password:</strong>
                 </label>
-                <input type="text" id='password' placeholder='Enter your password' name='password' onChange={(e) => setPassword(e.target.value)} />
+                <input type="password" id='password' placeholder='Enter your password' name='password' onChange={(e) => setPassword(e.target.value)} />
 
                 <button className={style.login} type='submit'>Login</button>
                 Dont have account yet? <Link to='/student_crud/register'>Register</Link>

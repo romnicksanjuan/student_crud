@@ -12,7 +12,7 @@ function Register() {
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-        axios.post('https://student-crud-server-five.vercel.app/student_crud/register', {username,password})
+        axios.post('https://student-crud-server-five.vercel.app/register', {username,password})
         .then(response => {console.log(response)
             if(response.data.message === 'register successfuly'){
                 navigate('/')
@@ -38,7 +38,7 @@ function Register() {
     <label htmlFor="password">
     <strong>Password:</strong>
     </label>
-    <input type="text" name="password" id="password" autoComplete='off' placeholder='Enter your password' className='form-control rounded-0' onChange={(e) => setPassword(e.target.value)}/>
+    <input type="password" name="password" id="password" autoComplete='off' placeholder='Enter your password' className='form-control rounded-0' onChange={(e) => setPassword(e.target.value)}/>
   </div>
 
   <button type='submit' className={style.register}>Register</button>

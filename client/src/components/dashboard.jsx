@@ -1,18 +1,22 @@
-import React,{useEffect} from 'react'
+import React,{useEffect, useState} from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
 
 const Dashboard = () => {
     const navigate = useNavigate();
+    const [username, setUsername] = useState();
 
     axios.defaults.withCredentials = true
     useEffect(() =>{
         axios.get('https://student-crud-server-five.vercel.app/student_crud/dashboard')
-        .then(response =>{ console.log(response.data)
-        if(response.data === "invalid token"){
-            navigate('/')
-            console.log("ss")
+        .then(response =>{ {
+        setUsername(response.data)
+
+        if(response.data.message){
+          navigate('/')
+          alert('please login again')
+        }
         }
     })
         .catch(error => console.log(error))
@@ -20,7 +24,12 @@ const Dashboard = () => {
 
   return (
     <div>
-      <h2>welcome student</h2>
+      {
+        username && 
+<h2>welcome {username}!</h2>
+        
+      }
+      
     </div>
   )
 }

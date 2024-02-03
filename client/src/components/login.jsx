@@ -9,13 +9,15 @@ const Login = () => {
 
   const navigate = useNavigate();
 
+  axios.defaults.withCredentials = true
   const checkUser = async () =>{
     try {
       
-      const response = await axios.post('https://student-crud-server-five.vercel.app/', {username,password})
+      const response = await axios.post('http://localhost:3000/', {username,password})
+      console.log(response.data)
 
       if(response.data.message === 'login success'){
-        navigate('/student_crud/read')
+        navigate('/student_crud/dashboard')
       }
 
       if(response.data.message === 'Password incorrect'){

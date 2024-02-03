@@ -3,6 +3,7 @@ import Register from './components/register';
 import Read from './components/read';
 import Update from './components/update';
 import Login from './components/login';
+import Dashboard from './components/dashboard';
 function app(){
 
   return(
@@ -13,6 +14,7 @@ function app(){
       <Route path='/student_crud/read' element={<Read/>}></Route>
       <Route path='/student_crud/update/:id' element={<Update/>}></Route>
       <Route path='/' element={<Login/>}></Route>
+      <Route path='/student_crud/dashboard' element={<Dashboard/>}></Route>
     </Routes>
     </BrowserRouter>
     </>

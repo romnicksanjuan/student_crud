@@ -1,17 +1,21 @@
 const student = require('../model/student');
 const Student = require('../model/student');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs')
 
 const studentRegister = async (req,res) =>{
     const {username , password} = req.body;
 
+    
     try {
         const check = await Student.findOne({username});
         if(check){
             res.json('username already exist');
         }else{
+            const hash = await bcrypt.hash(password,10)
             const save = await Student.create({
                 username,
-                password
+                password:hash
             })
             res.json({message:"register successfuly"})
             console.log('data saved' + save)
@@ -70,10 +74,14 @@ const studentLogin = async (req,res) =>{
     const {username, password} = req.body;
 
     try {
-        const check = await Student.findOne({username});
-        if(check){
-           
-            if(check.password === password){
+        const stud = await Student.findOne({username});
+        if(stud){
+          const pass = bcrypt.compare(stud.password,password)
+            if(pass){
+                
+                const accessToken = jwt.sign({id: stud.id, username:stud.username}, "secret", {expiresIn: '1m'})
+
+                res.cookie('accessToken', accessToken, {httpOnly:true})
                 res.json({message:"login success"})
             }else{
                 res.json({message:"Password incorrect"})
@@ -86,4 +94,27 @@ const studentLogin = async (req,res) =>{
     }
 }
 
-module.exports = {studentRegister,studentRead,studentDelete,getStudent,updateStudent,studentLogin}
+const dashboard = (req,res) =>{
+    res.json("this is a dashboard")
+}
+
+
+const verifyToken = (req,res, next) =>{
+    const token = req.cookies.accessToken;
+
+    if(!token){
+        return res.json({message:"unautorized"})
+    }
+
+    jwt.verify(token, "secret", (err, decoded) => {
+        if(err){
+            res.json({message:"invalid token"});
+        }
+        console.log(decoded)
+        req.username = decoded.username
+        next();
+    })  
+
+}
+
+module.exports = {studentRegister,studentRead,studentDelete,getStudent,updateStudent,studentLogin,verifyToken, dashboard}

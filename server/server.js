@@ -16,7 +16,7 @@ mongoose.connect('mongodb+srv://romnick:1234@romnickdb.e14diyv.mongodb.net/stude
 
 app.use(cors(
     {
-        origin:['http://localhost:5173'],
+        origin:['https://student-crud-eta.vercel.app'],
         methods:['POST', 'GET', 'DELETE', 'PUT'],
         credentials:true
     }
